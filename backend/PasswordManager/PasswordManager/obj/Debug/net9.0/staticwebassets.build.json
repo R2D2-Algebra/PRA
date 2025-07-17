@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "8sYDIEHGva793fOH3Dw44jsvf+1NJ4GEw2TYJ1kFr1Q=",
+  "Source": "PasswordManager",
+  "BasePath": "_content/PasswordManager",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
