@@ -30,5 +30,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PasswordManager.Controllers.SecureController",
+    "Method": "GetSecureData",
+    "RelativePath": "api/Secure/data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

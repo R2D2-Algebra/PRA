@@ -6,6 +6,6 @@ namespace PasswordManager.Services
     public interface IAuthService
     {
         Task<bool> RegisterAsync(RegisterDto dto);
-        Task<User?> LoginAsync(LoginDto dto);
+        Task<AuthResponseDto?> LoginAsync(LoginDto dto);
     }
 }

@@ -28,16 +28,12 @@ namespace PasswordManager.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            var user = await _authService.LoginAsync(dto);
-            if (user == null)
+            var token = await _authService.LoginAsync(dto);
+            if (token == null)
                 return Unauthorized("Pogrešan email ili lozinka.");
 
-            return Ok(new
-            {
-                message = "Login uspješan.",
-                user.Id,
-                user.Email
-            });
+            return Ok(new { token });
         }
+
     }
 }

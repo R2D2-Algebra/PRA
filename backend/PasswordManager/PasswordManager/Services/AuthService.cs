@@ -8,10 +8,12 @@ namespace PasswordManager.Services
     public class AuthService : IAuthService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IJwtService _jwtService;
 
-        public AuthService(ApplicationDbContext context)
+        public AuthService(ApplicationDbContext context, IJwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
         }
 
         public async Task<bool> RegisterAsync(RegisterDto dto)
@@ -31,13 +33,16 @@ namespace PasswordManager.Services
             return true;
         }
 
-        public async Task<User?> LoginAsync(LoginDto dto)
+        public async Task<AuthResponseDto?> LoginAsync(LoginDto dto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
             if (user == null) return null;
 
             bool isValid = BCrypt.Net.BCrypt.Verify(dto.MasterPassword, user.MasterPasswordHash);
-            return isValid ? user : null;
+            if (!isValid) return null;
+
+            string token = _jwtService.GenerateToken(user); // koristi IJwtService
+            return new AuthResponseDto(user.Email, token);
         }
     }
 }
