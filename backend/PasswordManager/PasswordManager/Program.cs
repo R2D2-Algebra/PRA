@@ -45,6 +45,17 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddScoped<IJwtService, JwtService>();
 
+builder.Services.AddScoped<IEncryptionService, EncryptionService>();
+
+builder.Services.AddScoped<ILoginEntryService, LoginEntryService>();
+
+builder.Services.AddScoped<ISecureNoteService, SecureNoteService>();
+
+builder.Services.AddScoped<ICreditCardService, CreditCardService>();
+
+
+
+
 
 var app = builder.Build();
 

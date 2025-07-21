@@ -3,60 +3,128 @@
   "WorkspaceRootPath": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\loginentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\loginentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\iencryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\iencryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\icreditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\icreditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\passwordmanager.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\passwordmanager.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\controllers\\creditcardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\controllers\\creditcardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\creditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\creditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\creditcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\creditcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\controllers\\securenotecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\controllers\\securenotecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\securenoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\securenoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\isecurenoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\isecurenoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\securenotedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\securenotedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\controllers\\loginentrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\controllers\\loginentrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\loginentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\loginentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\iloginentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\iloginentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\loginentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\loginentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Migrations\\20250717125549_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PasswordManager\\Migrations\\20250717125549_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\creditcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\creditcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\securenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\securenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\creditcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\creditcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\loginentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\loginentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\passwordmanager.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\passwordmanager.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|c:\\users\\luccioni\\source\\repos\\pra\\backend\\passwordmanager\\passwordmanager\\migrations\\20250717125549_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD716580-AD79-4128-AAFE-685AE3B4154C}|PasswordManager\\PasswordManager.csproj|solutionrelative:passwordmanager\\migrations\\20250717125549_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,123 +134,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "PasswordManager.http",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\PasswordManager.http",
-              "RelativeDocumentMoniker": "PasswordManager\\PasswordManager.http",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\PasswordManager.http",
-              "RelativeToolTip": "PasswordManager\\PasswordManager.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-07-17T12:31:05.603Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\AuthService.cs",
-              "RelativeToolTip": "PasswordManager\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBkAAAAuAAAAAAAAAA==",
+              "Title": "CreditCardController.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\CreditCardController.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Controllers\\CreditCardController.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\CreditCardController.cs",
+              "RelativeToolTip": "PasswordManager\\Controllers\\CreditCardController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T14:29:53.711Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IAuthService.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Services\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IAuthService.cs",
-              "RelativeToolTip": "PasswordManager\\Services\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T14:29:23.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "PasswordManager\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAkwBwAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T14:27:44.934Z",
+              "WhenOpened": "2025-07-21T11:30:22.478Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginDto.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginDto.cs",
-              "RelativeToolTip": "PasswordManager\\DTOs\\LoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABCAAAAAAAAAA==",
+              "Title": "CreditCardService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\CreditCardService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\CreditCardService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\CreditCardService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\CreditCardService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T14:25:14.009Z",
+              "WhenOpened": "2025-07-21T11:30:00.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ICreditCardService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ICreditCardService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\ICreditCardService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ICreditCardService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\ICreditCardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:29:38.514Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "RegisterDto.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\RegisterDto.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\RegisterDto.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\RegisterDto.cs",
-              "RelativeToolTip": "PasswordManager\\DTOs\\RegisterDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABCAAAAAAAAAA==",
+              "Title": "CreditCardDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\CreditCardDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\CreditCardDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\CreditCardDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\CreditCardDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T14:24:55.328Z",
+              "WhenOpened": "2025-07-21T11:29:12.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "20250717125549_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
-              "RelativeToolTip": "PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Title": "SecureNoteControler.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\SecureNoteControler.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Controllers\\SecureNoteControler.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\SecureNoteControler.cs",
+              "RelativeToolTip": "PasswordManager\\Controllers\\SecureNoteControler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T12:55:49.507Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "PasswordManager\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T12:46:42.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CreditCard.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\CreditCard.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Models\\CreditCard.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\CreditCard.cs",
-              "RelativeToolTip": "PasswordManager\\Models\\CreditCard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T12:46:16.051Z",
+              "WhenOpened": "2025-07-21T11:17:00.467Z",
               "EditorCaption": ""
             },
             {
@@ -193,62 +209,333 @@
               "RelativeDocumentMoniker": "PasswordManager\\Program.cs",
               "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Program.cs",
               "RelativeToolTip": "PasswordManager\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAowDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-17T12:27:28.706Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginEntry.cs",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\LoginEntry.cs",
-              "RelativeDocumentMoniker": "PasswordManager\\Models\\LoginEntry.cs",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\LoginEntry.cs",
-              "RelativeToolTip": "PasswordManager\\Models\\LoginEntry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IEncryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IEncryptionService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\IEncryptionService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IEncryptionService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\IEncryptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T12:45:30.534Z",
+              "WhenOpened": "2025-07-21T10:58:28.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IAuthService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:29:23.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EncryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\EncryptionService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\EncryptionService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\EncryptionService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\EncryptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T10:58:53.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SecureNoteService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\SecureNoteService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\SecureNoteService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\SecureNoteService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\SecureNoteService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAQwF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:16:33.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ISecureNoteService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ISecureNoteService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\ISecureNoteService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ISecureNoteService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\ISecureNoteService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:24:50.725Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\appsettings.json",
-              "RelativeDocumentMoniker": "PasswordManager\\appsettings.json",
-              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\appsettings.json",
-              "RelativeToolTip": "PasswordManager\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-17T12:49:40.517Z",
+              "Title": "SecureNoteDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\SecureNoteDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\SecureNoteDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\SecureNoteDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\SecureNoteDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:23:43.704Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "LoginEntryController.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\LoginEntryController.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Controllers\\LoginEntryController.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\LoginEntryController.cs",
+              "RelativeToolTip": "PasswordManager\\Controllers\\LoginEntryController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:14:45.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LoginEntryService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\LoginEntryService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\LoginEntryService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\LoginEntryService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\LoginEntryService.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAowGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:13:20.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ILoginEntryService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ILoginEntryService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\ILoginEntryService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\ILoginEntryService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\ILoginEntryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:11:58.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LoginEntryDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginEntryDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\LoginEntryDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginEntryDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\LoginEntryDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:11:08.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IJwtService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\IJwtService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\IJwtService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T22:43:33.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:25:14.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\JwtService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\JwtService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\JwtService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T22:44:07.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "PasswordManager\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:27:44.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "PasswordManager\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:46:42.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Services\\AuthService.cs",
+              "RelativeToolTip": "PasswordManager\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:29:53.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\RegisterDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\RegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T14:24:55.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "SecureNote.cs",
               "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\SecureNote.cs",
               "RelativeDocumentMoniker": "PasswordManager\\Models\\SecureNote.cs",
               "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\SecureNote.cs",
               "RelativeToolTip": "PasswordManager\\Models\\SecureNote.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-17T12:45:59.677Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
+              "Title": "CreditCard.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\CreditCard.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Models\\CreditCard.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\CreditCard.cs",
+              "RelativeToolTip": "PasswordManager\\Models\\CreditCard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:46:16.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LoginEntry.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\LoginEntry.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Models\\LoginEntry.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\LoginEntry.cs",
+              "RelativeToolTip": "PasswordManager\\Models\\LoginEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:45:30.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\DTOs\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\DTOs\\AuthResponseDto.cs",
+              "RelativeToolTip": "PasswordManager\\DTOs\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T23:11:29.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\appsettings.json",
+              "RelativeDocumentMoniker": "PasswordManager\\appsettings.json",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\appsettings.json",
+              "RelativeToolTip": "PasswordManager\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-17T12:49:40.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\User.cs",
               "RelativeDocumentMoniker": "PasswordManager\\Models\\User.cs",
               "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Models\\User.cs",
               "RelativeToolTip": "PasswordManager\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-17T12:39:38.814Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PasswordManager.http",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\PasswordManager.http",
+              "RelativeDocumentMoniker": "PasswordManager\\PasswordManager.http",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\PasswordManager.http",
+              "RelativeToolTip": "PasswordManager\\PasswordManager.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-07-17T12:31:05.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20250717125549_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
+              "RelativeDocumentMoniker": "PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\luccioni\\source\\repos\\PRA\\backend\\PasswordManager\\PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
+              "RelativeToolTip": "PasswordManager\\Migrations\\20250717125549_InitialCreate.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:55:49.507Z"
             }
           ]
         }
