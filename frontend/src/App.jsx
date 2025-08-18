@@ -1,17 +1,15 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './screens/HomeScreen';
-
+import React from "react";
+import Header from "./components/Header";
 
 const App = () => {
-    return (
-        <>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-            </Routes>
-        </>
-    );
+  return (
+    <div>
+      <Header />
+      <div style={{ padding: "20px" }}>
+        <h2>Main Content Here</h2>
+      </div>
+    </div>
+  );
 };
 
 export default App;
