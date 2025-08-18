@@ -15,7 +15,6 @@ const Header = ({ isLoggedIn, onLoginClick }) => {
         <span className="site-title">PassKeep</span>
       </div>
 
-      {/* Desktop menu */}
       <div className="header-right desktop-menu">
         <LangSelector />
         <ThemeToggle />
