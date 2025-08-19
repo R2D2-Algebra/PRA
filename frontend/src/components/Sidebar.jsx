@@ -1,17 +1,22 @@
 import React from "react";
+import ThemeToggle from "./ThemeToggle";
 
-const Sidebar = ({ sidebarClosed, toggleSidebar }) => {
+const LangSelector = () => <button className="btn btn-secondary">EN</button>;
+
+const Sidebar = () => {
   return (
-    <div className={`sidebar ${sidebarClosed ? "closed" : ""}`}>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-        {sidebarClosed ? "➤" : "◀"}
-      </button>
+    <aside className="sidebar">
       <nav className="sidebar-nav">
         <ul>
           <li><a href="#">Profile</a></li>
         </ul>
+
+        <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
+          <ThemeToggle />
+          <LangSelector />
+        </div>
       </nav>
-    </div>
+    </aside>
   );
 };
 
