@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import "../style.css"; 
+import ThemeToggle from "./ThemeToggle";
+import "../style.css";
 
 const LangSelector = () => <button className="btn btn-secondary">EN</button>;
-const ThemeToggle = () => <button className="btn btn-secondary">🌙</button>;
-const LoginModal = () => null;
 
 const Header = ({ isLoggedIn, onLoginClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const openLoginAndCloseMenu = () => {
+    onLoginClick(); 
+    setIsMenuOpen(false); 
+  };
 
   return (
     <header className="header">
@@ -15,12 +19,11 @@ const Header = ({ isLoggedIn, onLoginClick }) => {
         <span className="site-title">PassKeep</span>
       </div>
 
-      {/* Desktop menu */}
       <div className="header-right desktop-menu">
-        <LangSelector />
-        <ThemeToggle />
         {isLoggedIn ? (
-          <button className="btn btn-outline-primary">Profile</button>
+          <button className="btn btn-outline-primary" onClick={onLoginClick}>
+            Profile
+          </button>
         ) : (
           <button className="btn btn-primary" onClick={onLoginClick}>
             Login
@@ -28,26 +31,27 @@ const Header = ({ isLoggedIn, onLoginClick }) => {
         )}
       </div>
 
-      <div className="mobile-menu">
+      <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <button
-          className="hamburger"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="hamburger-btn"
+          onClick={() => setIsMenuOpen(o => !o)}
+          aria-expanded={isMenuOpen}
+          aria-label="Open menu"
         >
           &#9776;
         </button>
-        {isMenuOpen && (
-          <div className="dropdown-menu">
-            {isLoggedIn ? (
-              <button className="btn btn-outline-primary">Profile</button>
-            ) : (
-              <button className="btn btn-primary" onClick={onLoginClick}>
-                Login
-              </button>
-            )}
-            <ThemeToggle />
-            <LangSelector />
-          </div>
-        )}
+
+        <div className="app-dropdown">
+          <button
+            className={isLoggedIn ? "btn btn-outline-primary" : "btn btn-primary"}
+            onClick={openLoginAndCloseMenu}
+          >
+            {isLoggedIn ? "Profile" : "Login"}
+          </button>
+
+          <ThemeToggle />
+          <LangSelector />
+        </div>
       </div>
     </header>
   );

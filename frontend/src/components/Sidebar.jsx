@@ -1,41 +1,20 @@
-import React, { useState } from "react";
-import "../style.css";
+import React from "react";
+import ThemeToggle from "./ThemeToggle";
 
-const Sidebar = ({ isLoggedIn, onLoginClick }) => {
-  const [isOpen, setIsOpen] = useState(true);
+const LangSelector = () => <button className="btn btn-secondary">EN</button>;
 
+const Sidebar = () => {
   return (
-    <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
-      <button
-        className="sidebar-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? "«" : "»"}
-      </button>
-
+    <aside className="sidebar">
       <nav className="sidebar-nav">
         <ul>
-          <li>
-            <a href="#">Dashboard</a>
-          </li>
-          <li>
-            <a href="#">Passwords</a>
-          </li>
-          <li>
-            <a href="#">Credit Cards</a>
-          </li>
-          {isLoggedIn ? (
-            <li>
-              <a href="#">Profile</a>
-            </li>
-          ) : (
-            <li>
-              <button className="btn btn-primary" onClick={onLoginClick}>
-                Login
-              </button>
-            </li>
-          )}
+          <li><a href="#">Profile</a></li>
         </ul>
+
+        <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
+          <ThemeToggle />
+          <LangSelector />
+        </div>
       </nav>
     </aside>
   );
