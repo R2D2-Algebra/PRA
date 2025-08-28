@@ -423,3 +423,31 @@ footer, .site-footer, .app-footer {
   border: 0 !important;
   box-shadow: none !important;
 }
+
+@keyframes pulse {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.05); }
+  100% { filter: brightness(1); }
+}
+
+.passwords-list .btn-action {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.passwords-list .btn-action:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .passwords-list .btn-action:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
