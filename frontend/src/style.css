@@ -450,4 +450,112 @@ footer, .site-footer, .app-footer {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.cc-list {
+  width: 100%;
+  max-width: 720px;      
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.cc-header {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.cc-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.cc-search {
+  flex: 0 1 260px;
+  height: 38px;
+  padding: 0 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.cc-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.cc-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  min-width: 0;              
+}
+
+.cc-meta {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.cc-title {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  color: var(--text);
+}
+.cc-brand { font-weight: 700; }
+.cc-last4 { opacity: 0.85; }
+.cc-sub {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.cc-actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.cc-actions .btn-action {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cc-actions .btn-action:hover { background: rgba(0, 0, 0, 0.05); }
+[data-theme="dark"] .cc-actions .btn-action:hover { background: rgba(255,255,255,0.06); }
+
+@media (max-width: 600px) {
+  .cc-header { flex-direction: column; align-items: stretch; }
+  .cc-search { flex: 1 1 auto; width: 100%; }
+
+  .cc-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cc-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+
 
