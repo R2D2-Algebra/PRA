@@ -8,24 +8,20 @@ const getSystemTheme = () =>
     : "light";
 
 export const ThemeProvider = ({ children }) => {
-  // If there's a session override, use it; otherwise start from system
-  const initialOverride = sessionStorage.getItem("themeOverride"); // "light" | "dark" | null
+  const initialOverride = sessionStorage.getItem("themeOverride");
   const [theme, setTheme] = useState(initialOverride || getSystemTheme());
-  const [followSystem, setFollowSystem] = useState(!initialOverride); // true when no override
+  const [followSystem, setFollowSystem] = useState(!initialOverride); 
 
-  // Apply to <html data-theme="">
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  // Follow system when followSystem = true
   useEffect(() => {
     if (!followSystem) return;
 
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handle = () => setTheme(getSystemTheme());
 
-    // set now (in case system changed between renders)
     setTheme(getSystemTheme());
 
     if (mq.addEventListener) mq.addEventListener("change", handle);
