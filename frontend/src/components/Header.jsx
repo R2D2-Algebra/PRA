@@ -28,7 +28,7 @@ const Header = ({ onLoginClick }) => {
           </button>
         )}
       </div>
-
+      
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <button
           className="hamburger-btn"
@@ -42,11 +42,17 @@ const Header = ({ onLoginClick }) => {
         <div className="app-dropdown" onClick={closeMenu}>
           {user ? (
             <>
-              <NavLink to="/passwords" className="btn btn-outline-primary">
+              <NavLink to="/" className="btn btn-outline-primary">
+                Generator
+              </NavLink>
+              <NavLink to="/credentials" className="btn btn-outline-primary">
                 Passwords
               </NavLink>
               <NavLink to="/cc-info" className="btn btn-outline-primary">
-                CC Info
+                Card Info
+              </NavLink>
+              <NavLink to="/notes" className="btn btn-outline-primary">
+                Notes
               </NavLink>
               <button className="btn btn-outline-danger" onClick={logout}>
                 Logout
