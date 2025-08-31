@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const buildPool = (opts) => {
   const lowers = "abcdefghijklmnopqrstuvwxyz";
@@ -23,6 +24,7 @@ const makePassword = (opts) => {
 };
 
 const PasswordGenerator = () => {
+  const { t } = useTranslation();
   const [opts, setOpts] = useState({
     length: 16,
     lower: true,
@@ -31,11 +33,11 @@ const PasswordGenerator = () => {
     symbols: false,
   });
 
-  const password = useMemo(() => makePassword(opts), [opts]);
+  const [nonce, setNonce] = useState(0);
 
-  const regenerate = () => {
-    setOpts((o) => ({ ...o, length: Number(o.length) })); 
-  };
+  const password = useMemo(() => makePassword(opts), [opts, nonce]);
+
+  const regenerate = () => setNonce((n) => n + 1);
 
   const copy = async () => {
     try {
@@ -53,11 +55,11 @@ const PasswordGenerator = () => {
 
   return (
     <div className="gen-card">
-      <h2 className="gen-title">Password Generator</h2>
+      <h2 className="gen-title">{t("generator.title")}</h2>
 
       <div className="gen-options">
         <label className="gen-field">
-          <span>Length</span>
+          <span>{t("generator.length")}</span>
           <input
             className="gen-number"
             type="number"
@@ -66,34 +68,71 @@ const PasswordGenerator = () => {
             max="64"
             value={opts.length}
             onChange={onChange}
+            aria-label={t("generator.length")}
           />
         </label>
 
         <label className="gen-check">
-          <input type="checkbox" name="lower" checked={opts.lower} onChange={onChange} />
-          <span>Lowercase</span>
+          <input
+            type="checkbox"
+            name="lower"
+            checked={opts.lower}
+            onChange={onChange}
+            aria-label={t("generator.lowercase")}
+          />
+          <span>{t("generator.lowercase")}</span>
         </label>
 
         <label className="gen-check">
-          <input type="checkbox" name="upper" checked={opts.upper} onChange={onChange} />
-          <span>Uppercase</span>
+          <input
+            type="checkbox"
+            name="upper"
+            checked={opts.upper}
+            onChange={onChange}
+            aria-label={t("generator.uppercase")}
+          />
+          <span>{t("generator.uppercase")}</span>
         </label>
 
         <label className="gen-check">
-          <input type="checkbox" name="digits" checked={opts.digits} onChange={onChange} />
-          <span>Digits</span>
+          <input
+            type="checkbox"
+            name="digits"
+            checked={opts.digits}
+            onChange={onChange}
+            aria-label={t("generator.digits")}
+          />
+          <span>{t("generator.digits")}</span>
         </label>
 
         <label className="gen-check">
-          <input type="checkbox" name="symbols" checked={opts.symbols} onChange={onChange} />
-          <span>Symbols</span>
+          <input
+            type="checkbox"
+            name="symbols"
+            checked={opts.symbols}
+            onChange={onChange}
+            aria-label={t("generator.symbols")}
+          />
+          <span>{t("generator.symbols")}</span>
         </label>
       </div>
+
       <br />
+
       <div className="gen-output-row">
-        <input className="gen-output" type="text" value={password} readOnly />
-        <button type="button" className="btn gen-btn" onClick={regenerate}>New</button>
-        <button type="button" className="btn gen-btn" onClick={copy}>Copy</button>
+        <input
+          className="gen-output"
+          type="text"
+          value={password}
+          readOnly
+          aria-label={t("generator.title")}
+        />
+        <button type="button" className="btn gen-btn" onClick={regenerate}>
+          {t("generator.new")}
+        </button>
+        <button type="button" className="btn gen-btn" onClick={copy}>
+          {t("generator.copy")}
+        </button>
       </div>
     </div>
   );

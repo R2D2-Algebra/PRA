@@ -1,0 +1,109 @@
+{
+  "common": {
+    "add": "Hinzufügen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "loading": "Laden…",
+    "search": "Suchen",
+    "show": "Anzeigen",
+    "hide": "Ausblenden",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "no_results": "Keine Ergebnisse.",
+    "confirm": "Bestätigen",
+    "close": "Schließen"
+  },
+
+  "nav": {
+    "site": "PassKeep",
+    "generator": "Generator",
+    "passwords": "Passwörter",
+    "cards": "Karten",
+    "notes": "Notizen",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+
+  "generator": {
+    "title": "Passwortgenerator",
+    "length": "Länge",
+    "lowercase": "Kleinbuchstaben",
+    "uppercase": "Großbuchstaben",
+    "digits": "Ziffern",
+    "symbols": "Symbole",
+    "new": "Neu",
+    "copy": "Kopieren"
+  },
+
+  "passwords": {
+    "title": "Passwörter",
+    "search_placeholder": "Domain suchen (z. B. example.com)",
+    "add": "Hinzufügen",
+    "domain": "Domain",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "copy_password": "Passwort kopieren",
+    "view_edit": "Ansehen/Bearbeiten",
+    "delete": "Löschen",
+    "created_at": "Erstellt",
+    "no_entries": "Keine Einträge."
+  },
+
+  "cards": {
+    "title": "Kreditkarten",
+    "search_placeholder": "Nach Ziffern / letzten 4 suchen",
+    "card_label": "Karte",
+    "card_number": "Kartennummer",
+    "expiry": "Ablauf (MM/JJ)",
+    "cvv": "CVV",
+    "last4": "Letzte 4",
+    "copy_number": "Nummer kopieren",
+    "show": "Anzeigen",
+    "hide": "Ausblenden",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "no_cards": "Keine Karten.",
+    "modal_add": "Karte hinzufügen",
+    "modal_edit": "Karte bearbeiten",
+    "error_number": "Kartennummer muss 12–19 Ziffern haben.",
+    "error_expiry": "Ablauf muss MM/JJ oder MM/JJJJ sein.",
+    "error_cvv": "CVV muss 3–4 Ziffern haben.",
+    "error_save": "Speichern fehlgeschlagen.",
+    "confirm_delete": "Karte mit Endung {{last4}} löschen?"
+  },
+
+  "notes": {
+    "title": "Notizen",
+    "search_placeholder": "Notizen suchen…",
+    "no_notes": "Keine Notizen.",
+    "add_note": "Notiz hinzufügen",
+    "title_label": "Titel",
+    "content_label": "Inhalt",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "error_title_required": "Titel ist erforderlich.",
+    "confirm_delete": "Notiz „{{title}}“ löschen?"
+  },
+
+  "auth": {
+    "login_title": "Anmelden",
+    "email": "E-Mail",
+    "password": "Master-Passwort",
+    "remember_me": "Angemeldet bleiben",
+    "register_link": "Registrieren",
+    "sign_in": "Anmelden",
+    "signing_in": "Anmeldung…",
+    "or_with": "Oder mit",
+    "sign_in_gmail": "Mit Gmail anmelden",
+
+    "register_title": "Konto erstellen",
+    "confirm_password": "Passwort bestätigen",
+    "passwords_must_match": "Passwörter müssen übereinstimmen.",
+    "register": "Registrieren",
+    "registering": "Registrierung…"
+  }
+}

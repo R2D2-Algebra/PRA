@@ -1,0 +1,109 @@
+{
+  "common": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "loading": "Loading…",
+    "search": "Search",
+    "show": "Show",
+    "hide": "Hide",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "no_results": "No results.",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+
+  "nav": {
+    "site": "PassKeep",
+    "generator": "Generator",
+    "passwords": "Passwords",
+    "cards": "Card Info",
+    "notes": "Notes",
+    "login": "Login",
+    "logout": "Logout"
+  },
+
+  "generator": {
+    "title": "Password Generator",
+    "length": "Length",
+    "lowercase": "Lowercase",
+    "uppercase": "Uppercase",
+    "digits": "Digits",
+    "symbols": "Symbols",
+    "new": "New",
+    "copy": "Copy"
+  },
+
+  "passwords": {
+    "title": "Passwords",
+    "search_placeholder": "Search domain (e.g., example.com)",
+    "add": "Add",
+    "domain": "Domain",
+    "username": "Username",
+    "password": "Password",
+    "copy_password": "Copy password",
+    "view_edit": "View/Edit",
+    "delete": "Delete",
+    "created_at": "Created",
+    "no_entries": "No entries."
+  },
+
+  "cards": {
+    "title": "Credit cards",
+    "search_placeholder": "Search by digits / last 4",
+    "card_label": "Card",
+    "card_number": "Card number",
+    "expiry": "Expiry (MM/YY)",
+    "cvv": "CVV",
+    "last4": "Last 4",
+    "copy_number": "Copy number",
+    "show": "Show",
+    "hide": "Hide",
+    "edit": "Edit",
+    "delete": "Delete",
+    "no_cards": "No cards.",
+    "modal_add": "Add card",
+    "modal_edit": "Edit card",
+    "error_number": "Card number should be 12–19 digits.",
+    "error_expiry": "Expiry must be MM/YY or MM/YYYY.",
+    "error_cvv": "CVV must be 3–4 digits.",
+    "error_save": "Failed to save.",
+    "confirm_delete": "Delete card ending in {{last4}}?"
+  },
+
+  "notes": {
+    "title": "Notes",
+    "search_placeholder": "Search notes…",
+    "no_notes": "No notes.",
+    "add_note": "Add note",
+    "title_label": "Title",
+    "content_label": "Content",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "error_title_required": "Title is required.",
+    "confirm_delete": "Delete note \"{{title}}\"?"
+  },
+
+  "auth": {
+    "login_title": "Sign In",
+    "email": "Email",
+    "password": "Master Password",
+    "remember_me": "Remember me",
+    "register_link": "Register",
+    "sign_in": "Sign In",
+    "signing_in": "Signing in…",
+    "or_with": "Or with",
+    "sign_in_gmail": "Sign in with Gmail",
+
+    "register_title": "Create Account",
+    "confirm_password": "Confirm Password",
+    "passwords_must_match": "Passwords must match.",
+    "register": "Register",
+    "registering": "Registering…"
+  }
+}

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 import { NavLink } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
+import LangSelector from "./LangSelector";
 import { useAuth } from "../context/AuthContext.jsx";
-
-const LangSelector = () => <button className="btn btn-secondary">EN</button>;
+import { useTranslation } from "react-i18next";
 
 const Header = ({ onLoginClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
+  const { t } = useTranslation();
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -15,26 +16,25 @@ const Header = ({ onLoginClick }) => {
     <header className="header">
       <div className="header-left">
         <img src="../../pass.png" alt="Logo" className="logo" />
-        <span className="site-title">PassKeep</span>
+        <span className="site-title">{t("app.name", "PassKeep")}</span>
       </div>
       <div className="header-right desktop-menu">
         {user ? (
-            <button className="btn btn-outline-danger" onClick={logout}>
-              Logout
-            </button>
+          <button className="btn btn-outline-danger" onClick={logout}>
+            {t("nav.logout")}
+          </button>
         ) : (
           <button className="btn btn-primary" onClick={onLoginClick}>
-            Login
+            {t("nav.login")}
           </button>
         )}
       </div>
-      
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <button
           className="hamburger-btn"
           onClick={() => setIsMenuOpen((o) => !o)}
           aria-expanded={isMenuOpen}
-          aria-label="Open menu"
+          aria-label={t("nav.openMenu", "Open menu")}
         >
           &#9776;
         </button>
@@ -43,24 +43,24 @@ const Header = ({ onLoginClick }) => {
           {user ? (
             <>
               <NavLink to="/" className="btn btn-outline-primary">
-                Generator
+                {t("nav.generator")}
               </NavLink>
               <NavLink to="/credentials" className="btn btn-outline-primary">
-                Passwords
+                {t("nav.passwords")}
               </NavLink>
               <NavLink to="/cc-info" className="btn btn-outline-primary">
-                Card Info
+                {t("nav.cards")}
               </NavLink>
               <NavLink to="/notes" className="btn btn-outline-primary">
-                Notes
+                {t("nav.notes")}
               </NavLink>
               <button className="btn btn-outline-danger" onClick={logout}>
-                Logout
+                {t("nav.logout")}
               </button>
             </>
           ) : (
             <button className="btn btn-primary" onClick={onLoginClick}>
-              Login
+              {t("nav.login")}
             </button>
           )}
 

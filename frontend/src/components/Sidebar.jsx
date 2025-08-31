@@ -2,15 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import ThemeToggle from "./ThemeToggle";
-
-const LangSelector = () => (
-  <button className="btn btn-secondary" type="button">
-    EN
-  </button>
-);
+import LangSelector from "./LangSelector";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <aside className="sidebar">
@@ -18,20 +15,20 @@ const Sidebar = () => {
         <ul>
           <li>
             <NavLink to="/" end>
-              Generator
+              {t("nav.generator")}
             </NavLink>
           </li>
 
           {user && (
             <>
               <li>
-                <NavLink to="/credentials">Passwords</NavLink>
+                <NavLink to="/credentials">{t("nav.passwords")}</NavLink>
               </li>
               <li>
-                <NavLink to="/cc-info">Card Info</NavLink>
+                <NavLink to="/cc-info">{t("nav.cards")}</NavLink>
               </li>
               <li>
-                <NavLink to="/notes">Notes</NavLink>
+                <NavLink to="/notes">{t("nav.notes")}</NavLink>
               </li>
             </>
           )}
