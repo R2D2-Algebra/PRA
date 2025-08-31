@@ -13,7 +13,8 @@
     "copied": "Kopiert!",
     "no_results": "Keine Ergebnisse.",
     "confirm": "Bestätigen",
-    "close": "Schließen"
+    "close": "Schließen",
+    "language": "Sprache"
   },
 
   "nav": {
@@ -106,4 +107,5 @@
     "register": "Registrieren",
     "registering": "Registrierung…"
   }
+
 }

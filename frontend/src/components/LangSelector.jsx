@@ -1,38 +1,63 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const LangSelector = () => {
-  const { i18n } = useTranslation();
+const LANGS = [
+  { code: "en", short: "EN", label: "English" },
+  { code: "hr", short: "HR", label: "Hrvatski" },
+  { code: "de", short: "DE", label: "Deutsch" },
+];
 
-  const change = (e) => {
-    const lang = e.target.value;
-    i18n.changeLanguage(lang);
-    try {
-      localStorage.setItem("i18n:lang", lang);
-    } catch {}
-    const rtl = ["ar", "he", "fa", "ur"];
-    document.documentElement.dir = rtl.includes(lang) ? "rtl" : "ltr";
-  };
+export default function LangSelector({ fullWidth = true }) {
+  const { i18n, t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const current =
+    LANGS.find(l => l.code === (i18n.language || "en").slice(0,2)) || LANGS[0];
 
   useEffect(() => {
-    const saved = localStorage.getItem("i18n:lang");
-    if (saved && saved !== i18n.language) {
-      i18n.changeLanguage(saved);
-    }
-  }, [i18n]);
+    const onDocClick = (e) => {
+      if (!ref.current) return;
+      if (!ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, []);
+
+  const change = async (code) => {
+    await i18n.changeLanguage(code);
+    setOpen(false);
+  };
 
   return (
-    <select
-      className="btn-action"
-      aria-label="Language"
-      value={i18n.language}
-      onChange={change}
-    >
-      <option value="en">EN</option>
-      <option value="hr">HR</option>
-      <option value="de">DE</option>
-    </select>
-  );
-};
+    <div className="lang-dd" ref={ref} style={{ width: fullWidth ? "100%" : "auto" }}>
+      <button
+        type="button"
+        className="btn btn-outline-primary lang-dd-btn"
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+      >
+        {t("common.language", "Language")}: {current.short}
+      </button>
 
-export default LangSelector;
+      {open && (
+        <div className="lang-dd-menu" role="menu">
+          {LANGS.map(l => (
+            <button
+              key={l.code}
+              type="button"
+              className="lang-dd-item"
+              onClick={() => change(l.code)}
+              aria-current={current.code === l.code ? "true" : "false"}
+            >
+              <span style={{ marginRight: 8, opacity: .8 }}>{l.short}</span>
+              {l.label}
+              {current.code === l.code && <span style={{ marginLeft: "auto" }}>✓</span>}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
