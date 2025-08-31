@@ -1,32 +1,79 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
-import LangSelector from "./LangSelector";
 import { useAuth } from "../context/AuthContext.jsx";
+import ThemeToggle from "./ThemeToggle";
 import { useTranslation } from "react-i18next";
+
+const LangSelectorMenu = () => {
+  const { t, i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const current = (i18n.language || "en").toUpperCase();
+
+  const toggle = (e) => {
+    e.stopPropagation();
+    setOpen((o) => !o);
+  };
+  const pick = (lng) => (e) => {
+    e.stopPropagation();
+    i18n.changeLanguage(lng);
+    setOpen(false);
+  };
+
+  return (
+    <div className="lang-selector" style={{ position: "relative" }} onClick={(e)=>e.stopPropagation()}>
+      <button type="button" className="btn btn-outline-primary" onClick={toggle}>
+        {t("common.language", "Language")}: {current}
+      </button>
+
+      {open && (
+        <div
+          className="lang-menu"
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            right: 0,
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: 8,
+            boxShadow: "var(--shadow)",
+            padding: 6,
+            display: "flex",
+            gap: 6,
+            zIndex: 10,
+          }}
+        >
+          <button type="button" className="btn btn-outline-primary" onClick={pick("en")}>EN</button>
+          <button type="button" className="btn btn-outline-primary" onClick={pick("hr")}>HR</button>
+          <button type="button" className="btn btn-outline-primary" onClick={pick("de")}>DE</button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Header = ({ onLoginClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
-  const { t } = useTranslation();
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const NavButton = ({ to, children }) => (
+    <NavLink to={to} className="btn btn-outline-primary" onClick={closeMenu}>
+      {children}
+    </NavLink>
+  );
 
   return (
     <header className="header">
       <div className="header-left">
         <img src="../../pass.png" alt="Logo" className="logo" />
-        <span className="site-title">{t("app.name", "PassKeep")}</span>
+        <span className="site-title">PassKeep</span>
       </div>
       <div className="header-right desktop-menu">
         {user ? (
-          <button className="btn btn-outline-danger" onClick={logout}>
-            {t("nav.logout")}
-          </button>
+          <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
         ) : (
-          <button className="btn btn-primary" onClick={onLoginClick}>
-            {t("nav.login")}
-          </button>
+          <button className="btn btn-primary" onClick={onLoginClick}>Login</button>
         )}
       </div>
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
@@ -34,38 +81,29 @@ const Header = ({ onLoginClick }) => {
           className="hamburger-btn"
           onClick={() => setIsMenuOpen((o) => !o)}
           aria-expanded={isMenuOpen}
-          aria-label={t("nav.openMenu", "Open menu")}
+          aria-label="Open menu"
         >
           &#9776;
         </button>
-
-        <div className="app-dropdown" onClick={closeMenu}>
+        <div className="app-dropdown" onClick={(e)=>e.stopPropagation()}>
           {user ? (
             <>
-              <NavLink to="/" className="btn btn-outline-primary">
-                {t("nav.generator")}
-              </NavLink>
-              <NavLink to="/credentials" className="btn btn-outline-primary">
-                {t("nav.passwords")}
-              </NavLink>
-              <NavLink to="/cc-info" className="btn btn-outline-primary">
-                {t("nav.cards")}
-              </NavLink>
-              <NavLink to="/notes" className="btn btn-outline-primary">
-                {t("nav.notes")}
-              </NavLink>
-              <button className="btn btn-outline-danger" onClick={logout}>
-                {t("nav.logout")}
+              <NavButton to="/">Generator</NavButton>
+              <NavButton to="/credentials">Passwords</NavButton>
+              <NavButton to="/cc-info">Card Info</NavButton>
+              <NavButton to="/notes">Notes</NavButton>
+              <button className="btn btn-outline-danger" onClick={() => { logout(); closeMenu(); }}>
+                Logout
               </button>
             </>
           ) : (
-            <button className="btn btn-primary" onClick={onLoginClick}>
-              {t("nav.login")}
+            <button className="btn btn-primary" onClick={() => { onLoginClick(); closeMenu(); }}>
+              Login
             </button>
           )}
 
           <ThemeToggle />
-          <LangSelector />
+          <LangSelectorMenu />
         </div>
       </div>
     </header>
