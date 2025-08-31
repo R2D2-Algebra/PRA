@@ -1,4 +1,3 @@
-// src/components/CreditCards.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import {
@@ -8,9 +7,6 @@ import {
   deleteCard,
 } from "../api/creditCard.js";
 
-/* ---------- helpers ---------- */
-
-// Normalize API responses (camelCase or PascalCase) to a single shape.
 const normalize = (c) => ({
   id: c.id ?? c.Id,
   cardNumber: c.cardNumber ?? c.CardNumber ?? "",
@@ -18,23 +14,18 @@ const normalize = (c) => ({
   cvv: c.cvv ?? c.Cvv ?? "",
 });
 
-// Mask card number unless shown.
 const mask = (num = "", show = false) =>
   show ? formatNumber(num) : "•••• •••• •••• " + (num ? String(num).slice(-4) : "••••");
 
-// Add grouping spaces for readability.
 function formatNumber(n = "") {
   const digits = String(n).replace(/\s+/g, "");
   return digits.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
 }
 
-// Very basic validation for expiry: MM/YY or MM/YYYY
 const isValidExpiry = (val) => /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(val);
 
-// CVV: 3-4 digits
 const isValidCvv = (val) => /^\d{3,4}$/.test(val);
 
-/* ---------- local mock (for fake auth) ---------- */
 const MOCK = [
   {
     id: 1,
@@ -50,7 +41,6 @@ const MOCK = [
   },
 ];
 
-/* ---------- modal shell (reusing login modal styles) ---------- */
 const Modal = ({ title, children, onClose }) => (
   <div
     className="modal-overlay"
@@ -68,7 +58,6 @@ const Modal = ({ title, children, onClose }) => (
   </div>
 );
 
-/* ---------- component ---------- */
 export default function CreditCards() {
   const { user, token, useFakeAuth } = useAuth();
 

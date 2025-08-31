@@ -1,4 +1,3 @@
-// src/components/PasswordsList.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import {
@@ -8,7 +7,6 @@ import {
   deleteLogin,
 } from "../api/loginEntry.js";
 
-/* ---------- Helpers ---------- */
 const MOCK = [
   {
     id: 1,
@@ -28,7 +26,6 @@ const MOCK = [
 
 const mask = (value = "", isShown = false) => (isShown ? value : "••••••••");
 
-/* ---------- Tiny shared modal ---------- */
 const Modal = ({ title, onClose, children, maxWidth = 480 }) => (
   <div
     className="modal-overlay"
@@ -46,31 +43,22 @@ const Modal = ({ title, onClose, children, maxWidth = 480 }) => (
   </div>
 );
 
-/* ---------- Main component ---------- */
 const PasswordsList = () => {
   const { user, token, useFakeAuth } = useAuth();
 
   const [items, setItems] = useState(MOCK);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // show/hide per-row
   const [shown, setShown] = useState(new Set());
-
-  // add/edit modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editing, setEditing] = useState(null); // null => add, object => edit
+  const [editing, setEditing] = useState(null);
   const [form, setForm] = useState({ domain: "", username: "", password: "" });
   const [formErr, setFormErr] = useState("");
-
-  // delete confirm
   const [confirmId, setConfirmId] = useState(null);
 
-  // ---------- Load list ----------
   useEffect(() => {
     let alive = true;
     const load = async () => {
-      // When fake auth or not logged in, use mock
       if (!user || useFakeAuth || !token) {
         setItems(MOCK);
         return;
@@ -79,7 +67,6 @@ const PasswordsList = () => {
         setLoading(true);
         const data = await getLogins(query || undefined);
         if (!alive) return;
-        // Ensure array & normalize casing
         const normalized = Array.isArray(data)
           ? data.map((d) => ({
               id: d.id ?? d.Id,
@@ -105,7 +92,6 @@ const PasswordsList = () => {
     };
   }, [user, token, useFakeAuth, query]);
 
-  // client-side filter too (keeps working during fake mode)
   const filtered = useMemo(() => {
     if (!query) return items;
     const q = query.toLowerCase();
@@ -130,7 +116,6 @@ const PasswordsList = () => {
     } catch {}
   };
 
-  /* ---------- Add / Edit ---------- */
   const openAdd = () => {
     setEditing(null);
     setForm({ domain: "", username: "", password: "" });
@@ -168,7 +153,6 @@ const PasswordsList = () => {
     const msg = validate();
     if (msg) return setFormErr(msg);
 
-    // backend expects PascalCase per DTO; our API helper already sends JSON.stringify(payload)
     const payload = {
       Domain: form.domain.trim(),
       Username: form.username.trim(),
@@ -176,7 +160,6 @@ const PasswordsList = () => {
     };
 
     if (useFakeAuth || !token) {
-      // local update
       if (editing) {
         setItems((prev) =>
           prev.map((i) =>
@@ -230,7 +213,6 @@ const PasswordsList = () => {
     }
   };
 
-  /* ---------- Delete ---------- */
   const requestDelete = (id) => setConfirmId(id);
   const cancelDelete = () => setConfirmId(null);
 
@@ -254,7 +236,6 @@ const PasswordsList = () => {
 
   return (
     <div className="passwords-list" style={{ width: "100%", maxWidth: 900 }}>
-      {/* Header: title, search, add */}
       <div className="d-flex align-items-center justify-content-between mb-3 w-100" style={{ gap: 12 }}>
         <h3 className="m-0">Passwords</h3>
         <div className="d-flex" style={{ gap: 8 }}>
@@ -380,7 +361,6 @@ const PasswordsList = () => {
         </Modal>
       )}
 
-      {/* Delete confirm modal */}
       {confirmId !== null && (
         <Modal title="Delete entry" onClose={cancelDelete} maxWidth={420}>
           <p className="text-muted" style={{ marginBottom: 16 }}>
