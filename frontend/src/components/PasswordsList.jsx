@@ -1,180 +1,379 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { useAuth } from "../context/AuthContext.jsx";
+import {
+  getLogins,
+  createLogin,
+  updateLogin,
+  deleteLogin,
+} from "../api/loginEntry.js";
 
-const EyeIcon = ({ hidden }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    {hidden ? (
-      <>
-        <path d="M3 3l18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path d="M10.58 10.58A4 4 0 0012 16a4 4 0 003.42-5.42M21 12s-3.6 6-9 6c-1.2 0-2.31-.23-3.33-.64M6.16 14.12C4.33 12.92 3 11 3 11s3.6-6 9-6c1.06 0 2.07.17 3 .48" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </>
-    ) : (
-      <>
-        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor" strokeWidth="2" fill="none"/>
-        <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="2" fill="none"/>
-      </>
-    )}
-  </svg>
-);
-
-const CopyIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" strokeWidth="2"/>
-    <rect x="4" y="4" width="11" height="11" rx="2" stroke="currentColor" strokeWidth="2"/>
-  </svg>
-);
-
-const Favicon = ({ domain }) => {
-  const src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-  return <img className="favicon" src={src} alt="" loading="lazy" />;
-};
-
-// dummy
-const MOCK_ITEMS = [
-  { id: 1, domain: "google.com", username: "jane.doe@gmail.com", password: "g00gle*Pw!" },
-  { id: 2, domain: "amazon.com", username: "jane.shop", password: "AmaZon#1234" },
-  { id: 3, domain: "github.com", username: "jane-dev", password: "Gh!token-xyz" },
-  { id: 4, domain: "notion.so", username: "jane", password: "n0t1on-secure" },
+const MOCK = [
+  {
+    id: 1,
+    domain: "google.com",
+    username: "alice",
+    password: "p@ssw0rd123",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 2,
+    domain: "github.com",
+    username: "bob",
+    password: "ghp_xxxSECRET",
+    createdAt: new Date(Date.now() - 864e5).toISOString(),
+  },
 ];
 
-export default function PasswordsList() {
+const mask = (value = "", isShown = false) => (isShown ? value : "••••••••");
+
+const Modal = ({ title, onClose, children, maxWidth = 480 }) => (
+  <div
+    className="modal-overlay"
+    onClick={(e) => e.target.classList.contains("modal-overlay") && onClose()}
+  >
+    <div className="login-modal" style={{ maxWidth }}>
+      <button className="close-btn" onClick={onClose}>
+        ×
+      </button>
+      <h2 className="login-title" style={{ marginBottom: "1rem" }}>
+        {title}
+      </h2>
+      {children}
+    </div>
+  </div>
+);
+
+const PasswordsList = () => {
+  const { user, token, useFakeAuth } = useAuth();
+
+  const [items, setItems] = useState(MOCK);
   const [query, setQuery] = useState("");
-  const [items] = useState(MOCK_ITEMS);
-  const [revealed, setRevealed] = useState(() => new Set());
-  const [copiedId, setCopiedId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [shown, setShown] = useState(new Set());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [form, setForm] = useState({ domain: "", username: "", password: "" });
+  const [formErr, setFormErr] = useState("");
+  const [confirmId, setConfirmId] = useState(null);
+
+  useEffect(() => {
+    let alive = true;
+    const load = async () => {
+      if (!user || useFakeAuth || !token) {
+        setItems(MOCK);
+        return;
+      }
+      try {
+        setLoading(true);
+        const data = await getLogins(query || undefined);
+        if (!alive) return;
+        const normalized = Array.isArray(data)
+          ? data.map((d) => ({
+              id: d.id ?? d.Id,
+              domain: d.domain ?? d.Domain ?? "",
+              username: d.username ?? d.Username ?? "",
+              password: d.password ?? d.Password ?? "",
+              createdAt:
+                d.createdAt ??
+                d.CreatedAt ??
+                new Date().toISOString(),
+            }))
+          : [];
+        setItems(normalized);
+      } catch (e) {
+        console.warn("Passwords load failed:", e.message);
+      } finally {
+        if (alive) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      alive = false;
+    };
+  }, [user, token, useFakeAuth, query]);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return items;
+    if (!query) return items;
+    const q = query.toLowerCase();
     return items.filter(
       (i) =>
-        i.domain.toLowerCase().includes(q) ||
-        i.username.toLowerCase().includes(q)
+        (i.domain || "").toLowerCase().includes(q) ||
+        (i.username || "").toLowerCase().includes(q)
     );
   }, [items, query]);
 
-  const toggleReveal = (id) => {
-    setRevealed((prev) => {
+  const toggleShow = (id) =>
+    setShown((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
+
+  const copy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {}
   };
 
-  const copyPassword = async (id, password) => {
+  const openAdd = () => {
+    setEditing(null);
+    setForm({ domain: "", username: "", password: "" });
+    setFormErr("");
+    setIsModalOpen(true);
+  };
+
+  const openEdit = (row) => {
+    setEditing(row);
+    setForm({
+      domain: row.domain || "",
+      username: row.username || "",
+      password: row.password || "",
+    });
+    setFormErr("");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditing(null);
+    setForm({ domain: "", username: "", password: "" });
+    setFormErr("");
+  };
+
+  const validate = () => {
+    if (!form.domain.trim()) return "Domain is required.";
+    if (!form.username.trim()) return "Username is required.";
+    if (!form.password.trim()) return "Password is required.";
+    return "";
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const msg = validate();
+    if (msg) return setFormErr(msg);
+
+    const payload = {
+      Domain: form.domain.trim(),
+      Username: form.username.trim(),
+      Password: form.password,
+    };
+
+    if (useFakeAuth || !token) {
+      if (editing) {
+        setItems((prev) =>
+          prev.map((i) =>
+            i.id === editing.id ? { ...i, ...form } : i
+          )
+        );
+      } else {
+        const nextId = Math.max(0, ...items.map((i) => +i.id || 0)) + 1;
+        setItems((prev) => [
+          {
+            id: nextId,
+            ...form,
+            createdAt: new Date().toISOString(),
+          },
+          ...prev,
+        ]);
+      }
+      closeModal();
+      return;
+    }
+
     try {
-      await navigator.clipboard.writeText(password);
-      setCopiedId(id);
-      setTimeout(() => setCopiedId((v) => (v === id ? null : v)), 1200);
-    } catch {
-      // ignore
+      if (editing) {
+        await updateLogin(editing.id, payload);
+        setItems((prev) =>
+          prev.map((i) =>
+            i.id === editing.id
+              ? {
+                  ...i,
+                  domain: form.domain.trim(),
+                  username: form.username.trim(),
+                  password: form.password,
+                }
+              : i
+          )
+        );
+      } else {
+        const created = await createLogin(payload);
+        const normalized = {
+          id: created?.id ?? created?.Id ?? Date.now(),
+          domain: created?.domain ?? created?.Domain ?? form.domain.trim(),
+          username: created?.username ?? created?.Username ?? form.username.trim(),
+          password: created?.password ?? created?.Password ?? form.password,
+          createdAt: created?.createdAt ?? created?.CreatedAt ?? new Date().toISOString(),
+        };
+        setItems((prev) => [normalized, ...prev]);
+      }
+      closeModal();
+    } catch (e) {
+      setFormErr(e.message || "Save failed.");
+    }
+  };
+
+  const requestDelete = (id) => setConfirmId(id);
+  const cancelDelete = () => setConfirmId(null);
+
+  const confirmDelete = async () => {
+    const id = confirmId;
+    setConfirmId(null);
+    if (!id) return;
+
+    if (useFakeAuth || !token) {
+      setItems((prev) => prev.filter((i) => i.id !== id));
+      return;
+    }
+
+    try {
+      await deleteLogin(id);
+      setItems((prev) => prev.filter((i) => i.id !== id));
+    } catch (e) {
+      console.error("Delete failed:", e.message);
     }
   };
 
   return (
-    <section className="passwords-list" style={{ width: "100%", maxWidth: 820 }}>
-      <div className="list-header" style={{ width: "100%", marginBottom: "12px" }}>
-        <input
-          className="search-input"
-          type="search"
-          placeholder="Search sites or usernames…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          aria-label="Search passwords"
-          style={{
-            width: "100%",
-            height: 44,
-            borderRadius: 10,
-            border: `1px solid var(--border)`,
-            background: "var(--surface)",
-            color: "var(--text)",
-            padding: "0 12px",
-          }}
-        />
+    <div className="passwords-list" style={{ width: "100%", maxWidth: 900 }}>
+      <div className="d-flex align-items-center justify-content-between mb-3 w-100" style={{ gap: 12 }}>
+        <h3 className="m-0">Passwords</h3>
+        <div className="d-flex" style={{ gap: 8 }}>
+          <input
+            className="form-control"
+            placeholder="Search domain or username"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{ minWidth: 220 }}
+          />
+          <button className="btn-action" onClick={openAdd}>+ Add</button>
+        </div>
       </div>
 
-      <ul className="list" style={{ listStyle: "none", margin: 0, padding: 0, width: "100%" }}>
-        {filtered.map((item) => {
-          const isShown = revealed.has(item.id);
+      {loading && <div className="text-muted mb-2">Loading…</div>}
+
+      {/* List */}
+      <div className="list-group w-100">
+        {filtered.map((row) => {
+          const isShown = shown.has(row.id);
           return (
-            <li
-              key={item.id}
-              className="password-item"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 12,
-                padding: "10px 12px",
-                borderBottom: `1px solid var(--border)`,
-              }}
+            <div
+              key={row.id}
+              className="list-group-item d-flex align-items-center justify-content-between"
+              style={{ background: "var(--surface-2)", borderColor: "var(--border)", gap: 12 }}
             >
-              <div className="item-left" style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
-                <Favicon domain={item.domain} />
-                <div className="meta" style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
-                  <span className="domain" style={{ fontWeight: 600, color: "var(--text)" }}>
-                    {item.domain}
-                  </span>
-                  <span
-                    className="username"
-                    style={{ color: "var(--muted)", fontSize: ".92rem" }}
-                  >
-                    {item.username}
-                  </span>
-                  <span
-                    className="password"
-                    style={{ color: "var(--muted)", fontSize: ".92rem", letterSpacing: 1 }}
-                  >
-                    {isShown ? item.password : "• • • • • • • •"}
-                  </span>
-                </div>
+              <div className="d-flex flex-column" style={{ minWidth: 0 }}>
+                <strong style={{ color: "var(--text)" }}>{row.domain}</strong>
+                <small className="text-muted">
+                  {isShown ? row.username : mask(row.username)}
+                </small>
+                <code style={{ marginTop: 4 }}>{isShown ? row.password : mask(row.password)}</code>
+                <small className="text-muted" style={{ marginTop: 4 }}>
+                  Created:{" "}
+                  {row.createdAt
+                    ? new Date(row.createdAt).toLocaleString()
+                    : "-"}
+                </small>
               </div>
 
-              <div className="item-actions" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <button
-                  className="btn-action icon-btn"
-                  onClick={() => toggleReveal(item.id)}
-                  title={isShown ? "Hide password" : "Show password"}
-                  aria-label={isShown ? "Hide password" : "Show password"}
-                  style={iconBtnStyle}
-                >
-                  <EyeIcon hidden={isShown} />
+              <div className="d-flex" style={{ gap: 8, flexWrap: "wrap" }}>
+                <button className="btn-action" onClick={() => toggleShow(row.id)}>
+                  {isShown ? "Hide" : "Show"}
                 </button>
-
                 <button
-                  className="btn-action icon-btn"
-                  onClick={() => copyPassword(item.id, item.password)}
+                  className="btn-action"
+                  onClick={() => copy(row.password)}
                   title="Copy password"
-                  aria-label="Copy password"
-                  style={iconBtnStyle}
                 >
-                  <CopyIcon />
+                  Copy password
                 </button>
-
-                {copiedId === item.id && (
-                  <span style={{ fontSize: ".8rem", color: "var(--muted)" }}>Copied!</span>
-                )}
+                <button className="btn-action" onClick={() => openEdit(row)}>
+                  Edit
+                </button>
+                <button className="btn-action" onClick={() => requestDelete(row.id)}>
+                  Delete
+                </button>
               </div>
-            </li>
+            </div>
           );
         })}
 
-        {filtered.length === 0 && (
-          <li style={{ padding: "16px 8px", color: "var(--muted)" }}>No results.</li>
+        {!filtered.length && !loading && (
+          <div className="text-muted p-3">No entries.</div>
         )}
-      </ul>
-    </section>
-  );
-}
+      </div>
 
-const iconBtnStyle = {
-  padding: "6px 10px",
-  borderRadius: 8,
-  border: "1px solid var(--border)",
-  background: "var(--surface)",
-  color: "var(--text)",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  transition: "background .2s, border-color .2s",
+      {/* Add/Edit modal */}
+      {isModalOpen && (
+        <Modal title={editing ? "Edit password" : "Add password"} onClose={closeModal}>
+          {formErr && (
+            <div className="alert alert-danger" role="alert" style={{ marginBottom: "0.75rem" }}>
+              {formErr}
+            </div>
+          )}
+
+          <form className="login-form" onSubmit={handleSave}>
+            <div className="form-group">
+              <label htmlFor="pw-domain">Domain</label>
+              <input
+                id="pw-domain"
+                type="text"
+                placeholder="example.com"
+                value={form.domain}
+                onChange={(e) => setForm((f) => ({ ...f, domain: e.target.value }))}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="pw-username">Username</label>
+              <input
+                id="pw-username"
+                type="text"
+                placeholder="your username"
+                value={form.username}
+                onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="pw-password">Password</label>
+              <input
+                id="pw-password"
+                type="text"
+                placeholder="your password"
+                value={form.password}
+                onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
+                required
+              />
+            </div>
+
+            <div className="d-flex justify-content-end" style={{ gap: 8, marginTop: 8 }}>
+              <button type="button" className="btn-action" onClick={closeModal}>
+                Cancel
+              </button>
+              <button type="submit" className="btn-action">
+                {editing ? "Save" : "Add"}
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
+
+      {confirmId !== null && (
+        <Modal title="Delete entry" onClose={cancelDelete} maxWidth={420}>
+          <p className="text-muted" style={{ marginBottom: 16 }}>
+            Are you sure you want to delete this password entry?
+          </p>
+          <div className="d-flex justify-content-end" style={{ gap: 8 }}>
+            <button className="btn-action" onClick={cancelDelete}>Cancel</button>
+            <button className="btn-action" onClick={confirmDelete}>Delete</button>
+          </div>
+        </Modal>
+      )}
+    </div>
+  );
 };
+
+export default PasswordsList;

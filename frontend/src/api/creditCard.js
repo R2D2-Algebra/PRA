@@ -1,4 +1,10 @@
-import apiClient from "./client";
+import http from "./http";
 
-export const getCards = () => apiClient.get("/creditcard");
-export const addCard = (card) => apiClient.post("/creditcard", card);
+export const getCards   = () => http("/api/CreditCard");
+export const getCard    = (id) => http(`/api/CreditCard/${id}`);
+export const createCard = (payload) =>
+  http("/api/CreditCard", { method: "POST", body: JSON.stringify(payload) });
+export const updateCard = (id, payload) =>
+  http(`/api/CreditCard/${id}`, { method: "PUT", body: JSON.stringify(payload) });
+export const deleteCard = (id) =>
+  http(`/api/CreditCard/${id}`, { method: "DELETE" });

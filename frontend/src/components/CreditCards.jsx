@@ -1,306 +1,382 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useAuth } from "../context/AuthContext.jsx";
+import {
+  getCards,
+  createCard,
+  updateCard,
+  deleteCard,
+} from "../api/creditCard.js";
 
-async function copy(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand("copy"); } catch {}
-    document.body.removeChild(ta);
-  }
+const normalize = (c) => ({
+  id: c.id ?? c.Id,
+  cardNumber: c.cardNumber ?? c.CardNumber ?? "",
+  expiry: c.expiry ?? c.Expiry ?? "",
+  cvv: c.cvv ?? c.Cvv ?? "",
+});
+
+const mask = (num = "", show = false) =>
+  show ? formatNumber(num) : "•••• •••• •••• " + (num ? String(num).slice(-4) : "••••");
+
+function formatNumber(n = "") {
+  const digits = String(n).replace(/\s+/g, "");
+  return digits.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
 }
 
-/* dummy */
-async function fetchCardsMock() {
-  // shape: [{ id, label, brand, last4, name, number, expMonth, expYear }]
-  return [
-    {
-      id: "cc1",
-      label: "Personal",
-      brand: "visa",
-      last4: "4242",
-      name: "John Doe",
-      number: "4242424242424242",
-      expMonth: "12",
-      expYear: "2026",
-    },
-    {
-      id: "cc2",
-      label: "Work",
-      brand: "mastercard",
-      last4: "4444",
-      name: "John Doe",
-      number: "5555555555554444",
-      expMonth: "09",
-      expYear: "2027",
-    },
-  ];
-}
-/** ------------------------------------------------ */
+const isValidExpiry = (val) => /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(val);
 
-const brandIcon = (brand) => {
-  const common = {
-    width: 28,
-    height: 18,
-    borderRadius: 3,
-    display: "inline-block",
-  };
-  switch ((brand || "").toLowerCase()) {
-    case "visa":
-      return <span style={{ ...common, background: "#1a1f71" }} />;
-    case "mastercard":
-      return (
-        <span style={{ ...common, position: "relative" }}>
-          <span
-            style={{
-              position: "absolute",
-              left: 2,
-              top: 2,
-              width: 12,
-              height: 12,
-              background: "#eb001b",
-              borderRadius: "50%",
-              opacity: 0.9,
-            }}
-          />
-          <span
-            style={{
-              position: "absolute",
-              right: 2,
-              top: 2,
-              width: 12,
-              height: 12,
-              background: "#f79e1b",
-              borderRadius: "50%",
-              opacity: 0.9,
-            }}
-          />
-        </span>
-      );
-    default:
-      return <span style={{ ...common, background: "#6b7280" }} />;
-  }
-};
+const isValidCvv = (val) => /^\d{3,4}$/.test(val);
+
+const MOCK = [
+  {
+    id: 1,
+    cardNumber: "4111111111111111",
+    expiry: "12/27",
+    cvv: "123",
+  },
+  {
+    id: 2,
+    cardNumber: "5555555555554444",
+    expiry: "08/26",
+    cvv: "987",
+  },
+];
+
+const Modal = ({ title, children, onClose }) => (
+  <div
+    className="modal-overlay"
+    onClick={(e) => e.target.classList.contains("modal-overlay") && onClose()}
+  >
+    <div className="login-modal" style={{ maxWidth: 460 }}>
+      <button className="close-btn" onClick={onClose}>
+        ×
+      </button>
+      <h2 className="login-title" style={{ marginBottom: "1rem" }}>
+        {title}
+      </h2>
+      {children}
+    </div>
+  </div>
+);
 
 export default function CreditCards() {
-  const [loading, setLoading] = useState(true);
-  const [cards, setCards] = useState([]);
+  const { user, token, useFakeAuth } = useAuth();
+
+  const [cards, setCards] = useState(MOCK);
   const [query, setQuery] = useState("");
-  const [openId, setOpenId] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const [showing, setShowing] = useState(new Set());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+
+  const [form, setForm] = useState({
+    cardNumber: "",
+    expiry: "",
+    cvv: "",
+  });
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const data = await fetchCardsMock();
-      setCards(data);
-      setLoading(false);
-    })();
-  }, []);
+    let alive = true;
+    const load = async () => {
+      if (useFakeAuth) {
+        setCards(MOCK);
+        return;
+      }
+      try {
+        setLoading(true);
+        const data = await getCards();
+        setCards(Array.isArray(data) ? data : []);
+      } catch (e) {
+        console.warn("Cards load failed:", e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      alive = false;
+    };
+  }, [user, token, useFakeAuth]);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return cards;
-    return cards.filter(
-      (c) =>
-        c.label.toLowerCase().includes(q) ||
-        c.brand.toLowerCase().includes(q) ||
-        c.last4.includes(q)
-    );
+    if (!query) return cards;
+    const q = query.toLowerCase().replace(/\s+/g, "");
+    return cards.filter((c) => {
+      const num = String(c.cardNumber || "");
+      return (
+        num.toLowerCase().includes(q) ||
+        num.slice(-4).toLowerCase().includes(q)
+      );
+    });
   }, [cards, query]);
 
+  const toggleShow = (id) => {
+    setShowing((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const copy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {}
+  };
+
+  const openAdd = () => {
+    setEditing(null);
+    setForm({ cardNumber: "", expiry: "", cvv: "" });
+    setError("");
+    setIsModalOpen(true);
+  };
+
+  const openEdit = (card) => {
+    setEditing(card);
+    setForm({
+      cardNumber: formatNumber(card.cardNumber || ""),
+      expiry: card.expiry || "",
+      cvv: card.cvv || "",
+    });
+    setError("");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditing(null);
+    setForm({ cardNumber: "", expiry: "", cvv: "" });
+    setError("");
+  };
+
+  const validate = () => {
+    const num = form.cardNumber.replace(/\s+/g, "");
+    if (!/^\d{12,19}$/.test(num)) return "Card number should be 12–19 digits.";
+    if (!isValidExpiry(form.expiry)) return "Expiry must be MM/YY or MM/YYYY.";
+    if (!isValidCvv(form.cvv)) return "CVV must be 3–4 digits.";
+    return "";
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const msg = validate();
+    if (msg) return setError(msg);
+
+    const payload = {
+      CardNumber: form.cardNumber.replace(/\s+/g, ""),
+      Expiry: form.expiry.trim(),
+      Cvv: form.cvv.trim(),
+    };
+
+    if (useFakeAuth) {
+      if (editing) {
+        setCards((prev) =>
+          prev.map((c) =>
+            c.id === editing.id
+              ? {
+                  ...c,
+                  cardNumber: payload.CardNumber,
+                  expiry: payload.Expiry,
+                  cvv: payload.Cvv,
+                }
+              : c
+          )
+        );
+      } else {
+        const nextId = Math.max(0, ...cards.map((c) => c.id)) + 1;
+        setCards((prev) => [
+          {
+            id: nextId,
+            cardNumber: payload.CardNumber,
+            expiry: payload.Expiry,
+            cvv: payload.Cvv,
+          },
+          ...prev,
+        ]);
+      }
+      closeModal();
+      return;
+    }
+
+    try {
+      if (editing) {
+        await updateCard(editing.id, payload);
+        setCards((prev) =>
+          prev.map((c) =>
+            c.id === editing.id
+              ? {
+                  ...c,
+                  cardNumber: payload.CardNumber,
+                  expiry: payload.Expiry,
+                  cvv: payload.Cvv,
+                }
+              : c
+          )
+        );
+      } else {
+        const created = await createCard(payload);
+        const newCard = normalize(created ?? payload);
+        setCards((prev) => [newCard, ...prev]);
+      }
+      closeModal();
+    } catch (e) {
+      setError(e.message || "Failed to save.");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const item = cards.find((c) => c.id === id);
+    if (!item) return;
+    if (!confirm(`Delete card ending in ${String(item.cardNumber).slice(-4)}?`))
+      return;
+
+    if (useFakeAuth) {
+      setCards((prev) => prev.filter((c) => c.id !== id));
+      return;
+    }
+
+    try {
+      await deleteCard(id);
+      setCards((prev) => prev.filter((c) => c.id !== id));
+    } catch (e) {
+      console.error("Delete failed:", e.message);
+    }
+  };
+
   return (
-    <section style={{ width: "100%", maxWidth: 920 }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 16,
-        }}
-      >
-        <h2 style={{ margin: 0, fontWeight: 700 }}>Credit cards</h2>
-        <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
+    <div className="cc-list">
+      <div className="cc-header">
+        <h2>Credit cards</h2>
+        <div style={{ display: "flex", gap: 8 }}>
           <input
-            type="search"
-            placeholder="Search card, brand or last 4…"
+            className="cc-search"
+            placeholder="Search by digits / last 4"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search credit cards"
-            style={{
-              height: 40,
-              minWidth: 260,
-              padding: "0 12px",
-              borderRadius: 8,
-              border: `1px solid var(--border)`,
-              background: "var(--surface)",
-              color: "var(--text)",
-            }}
           />
-          <button
-            type="button"
-            className="gen-btn"
-            onClick={() => alert("Add new card (hook up later)")}
-          >
-            Add
+          <button className="btn-action" onClick={openAdd} aria-label="Add card">
+            + Add
           </button>
         </div>
       </div>
 
-      <div
-        style={{
-          background: "var(--surface-2)",
-          border: `1px solid var(--border)`,
-          boxShadow: "var(--shadow)",
-          borderRadius: 12,
-          overflow: "hidden",
-        }}
-      >
-        {loading ? (
-          <ListSkeleton rows={4} />
-        ) : filtered.length === 0 ? (
-          <div style={{ padding: 20, color: "var(--muted)" }}>
-            No cards found for this search.
-          </div>
-        ) : (
-          filtered.map((card) => (
-            <div key={card.id} style={{ borderTop: `1px solid var(--border)` }}>
-              <button
-                type="button"
-                onClick={() => setOpenId((id) => (id === card.id ? null : card.id))}
-                aria-expanded={openId === card.id}
-                style={{
-                  width: "100%",
-                  display: "grid",
-                  gridTemplateColumns: "46px 1fr auto",
-                  gap: 12,
-                  alignItems: "center",
-                  padding: "14px 16px",
-                  background: "transparent",
-                  border: "0",
-                  cursor: "pointer",
-                }}
-              >
-                <span style={{ marginInline: 8 }}>{brandIcon(card.brand)}</span>
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ fontWeight: 600 }}>
-                    {card.label} •••• {card.last4}
-                  </div>
-                  <div style={{ color: "var(--muted)", fontSize: 13, marginTop: 2 }}>
-                    {card.brand.toUpperCase()}
-                  </div>
-                </div>
-                <span
-                  aria-hidden
-                  style={{
-                    opacity: 0.6,
-                    transform: openId === card.id ? "rotate(90deg)" : "none",
-                    transition: "transform .15s",
-                    fontWeight: 700,
-                  }}
-                >
-                  ▸
-                </span>
-              </button>
+      {loading && <div className="text-muted mb-2">Loading…</div>}
 
-              {openId === card.id && (
-                <div
-                  style={{
-                    padding: "10px 16px 16px 66px",
-                    display: "grid",
-                    gap: 10,
-                  }}
-                >
-                  <Field label="Name on card" value={card.name} />
-                  <Field label="Number" value={`•••• •••• •••• ${card.last4}`} />
-                  <Field
-                    label="Expiry"
-                    value={`${card.expMonth}/${card.expYear}`}
-                  />
-                  <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-                    <button
-                      type="button"
-                      className="gen-btn"
-                      onClick={() => copy(card.number)}
-                      title="Copy full number"
-                    >
-                      Copy number
-                    </button>
-                    <button
-                      type="button"
-                      className="gen-btn"
-                      onClick={() => copy(`${card.expMonth}/${card.expYear}`)}
-                      title="Copy expiry"
-                    >
-                      Copy expiry
-                    </button>
-                  </div>
+      <ul className="cc-items">
+        {filtered.map((card) => {
+          const isShown = showing.has(card.id);
+          const last4 = String(card.cardNumber || "").slice(-4);
+
+          return (
+            <li key={card.id} className="cc-card">
+              <div className="cc-meta">
+                <div className="cc-title">
+                  <span className="cc-brand">Card</span>
+                  <span className="cc-last4">{mask(card.cardNumber, isShown)}</span>
                 </div>
-              )}
-            </div>
-          ))
+                <div className="cc-sub">
+                  <span>Expiry: {card.expiry || "—"}</span>
+                  <span>CVV: {isShown ? card.cvv : "•••"}</span>
+                  <span>Last 4: {last4 || "—"}</span>
+                </div>
+              </div>
+
+              <div className="cc-actions">
+                <button
+                  className="btn-action"
+                  onClick={() => copy(String(card.cardNumber || ""))}
+                  title="Copy full number"
+                >
+                  Copy number
+                </button>
+                <button className="btn-action" onClick={() => toggleShow(card.id)}>
+                  {isShown ? "Hide" : "Show"}
+                </button>
+                <button className="btn-action" onClick={() => openEdit(card)}>
+                  Edit
+                </button>
+                <button className="btn-action" onClick={() => handleDelete(card.id)}>
+                  Delete
+                </button>
+              </div>
+            </li>
+          );
+        })}
+
+        {!filtered.length && !loading && (
+          <li className="text-muted p-3">No cards.</li>
         )}
-      </div>
-    </section>
-  );
-}
+      </ul>
 
-function Field({ label, value }) {
-  return (
-    <div
-      style={{
-        border: `1px solid var(--border)`,
-        borderRadius: 10,
-        padding: 12,
-        background: "var(--surface)",
-        display: "grid",
-        gap: 4,
-      }}
-    >
-      <div style={{ color: "var(--muted)", fontSize: 12 }}>{label}</div>
-      <div style={{ fontWeight: 600 }}>{value}</div>
-    </div>
-  );
-}
+      {isModalOpen && (
+        <Modal title={editing ? "Edit card" : "Add card"} onClose={closeModal}>
+          {error && (
+            <div
+              className="alert alert-danger"
+              role="alert"
+              style={{ marginBottom: "0.75rem" }}
+            >
+              {error}
+            </div>
+          )}
 
-function ListSkeleton({ rows = 4 }) {
-  return (
-    <div>
-      {Array.from({ length: rows }).map((_, i) => (
-        <div
-          key={i}
-          style={{
-            padding: "14px 16px",
-            display: "grid",
-            gridTemplateColumns: "46px 1fr",
-            gap: 12,
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              width: 28,
-              height: 18,
-              borderRadius: 3,
-              background:
-                "linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.12), rgba(0,0,0,.06))",
-              animation: "pulse 1.2s infinite",
-            }}
-          />
-          <div
-            style={{
-              height: 12,
-              width: "40%",
-              borderRadius: 6,
-              background:
-                "linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.12), rgba(0,0,0,.06))",
-              animation: "pulse 1.2s infinite",
-            }}
-          />
-        </div>
-      ))}
+          <form onSubmit={handleSave} className="login-form">
+            <div className="form-group">
+              <label htmlFor="cc-number">Card number</label>
+              <input
+                id="cc-number"
+                type="text"
+                inputMode="numeric"
+                value={form.cardNumber}
+                onChange={(e) =>
+                  setForm((f) => ({
+                    ...f,
+                    cardNumber: e.target.value.replace(/[^\d\s]/g, ""),
+                  }))
+                }
+                placeholder="1234 5678 9012 3456"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="cc-expiry">Expiry (MM/YY)</label>
+              <input
+                id="cc-expiry"
+                type="text"
+                inputMode="numeric"
+                value={form.expiry}
+                onChange={(e) => setForm((f) => ({ ...f, expiry: e.target.value }))}
+                placeholder="12/27"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="cc-cvv">CVV</label>
+              <input
+                id="cc-cvv"
+                type="text"
+                inputMode="numeric"
+                value={form.cvv}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, cvv: e.target.value.replace(/\D/g, "") }))
+                }
+                placeholder="123"
+              />
+            </div>
+
+            <div className="d-flex justify-content-end gap-2 mt-2">
+              <button type="button" className="btn-action" onClick={closeModal}>
+                Cancel
+              </button>
+              <button type="submit" className="btn-action">
+                {editing ? "Save" : "Add"}
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
     </div>
   );
 }

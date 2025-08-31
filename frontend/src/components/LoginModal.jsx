@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 
 const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
@@ -11,6 +11,7 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setErr("");
     try {
       await login(email, password);
@@ -24,20 +25,21 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
     console.log("Login with Gmail clicked");
   };
 
+  const goRegister = () => {
+    onClose();
+    onOpenRegister?.();
+  };
+
   return (
     <div
       className="modal-overlay"
-      onClick={(e) =>
-        e.target.classList.contains("modal-overlay") && onClose()
-      }
+      onClick={(e) => e.target.classList.contains("modal-overlay") && onClose()}
     >
-      <div className="login-modal">
-        <button className="close-btn" onClick={onClose}>
-          ×
-        </button>
+      <div className="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <button className="close-btn" onClick={onClose} aria-label="Close">×</button>
 
         <form className="login-form" onSubmit={handleSubmit}>
-          <h2 className="login-title">Sign In</h2>
+          <h2 id="loginTitle" className="login-title">Sign In</h2>
 
           {err && (
             <div className="alert alert-danger" role="alert">
@@ -50,10 +52,13 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
             <input
               id="email"
               type="email"
-              placeholder="Enter your Email"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="username"
+              autoFocus
+              disabled={loading}
             />
           </div>
 
@@ -62,83 +67,56 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
             <input
               id="password"
               type="password"
-              placeholder="Enter your Password"
+              placeholder="Enter your master password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
+              disabled={loading}
             />
           </div>
 
           <div className="form-options" style={{ marginBottom: "0.5rem" }}>
             <label>
-              <input type="checkbox" /> Remember me
+              <input type="checkbox" disabled={loading} /> Remember me
             </label>
           </div>
 
           <div
             className="form-links"
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "1rem",
-            }}
+            style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}
           >
-            <a href="#" className="forgot-link">
-              Forgot password?
-            </a>
             <button
               type="button"
               className="btn btn-link p-0"
-              onClick={onOpenRegister || (() => {})}
+              onClick={goRegister}
+              disabled={loading}
             >
               Register
             </button>
           </div>
 
-          <button type="submit" className="btn-submit">
-            Sign In
+          <button type="submit" className="btn-submit" disabled={loading}>
+            {loading ? "Signing in…" : "Sign In"}
           </button>
 
           <div className="divider">Or with</div>
 
           <button
-              type="button"
-              className="btn-social"
-              onClick={handleGmailLogin}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                fontWeight: "600",
-                background: "#fff",
-                border: "1px solid #d1d5db",
-                color: "#000",
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  fill="#EA4335"
-                  d="M24 22.08L9.6 12v24h6v-12.8l8.4 5.6 8.4-5.6V36h6V12z"
-                />
-                <path
-                  fill="#FBBC05"
-                  d="M24 22.08L9.6 12v24h6v-12.8l8.4 5.6z"
-                  opacity=".6"
-                />
-                <path
-                  fill="#4285F4"
-                  d="M24 22.08l14.4-10.08v24h-6V23.2z"
-                  opacity=".6"
-                />
-              </svg>
-              Sign in with Gmail
-            </button>
+            type="button"
+            className="btn-social"
+            onClick={handleGmailLogin}
+            aria-label="Sign in with Gmail"
+            disabled={loading}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 48 48" aria-hidden="true" style={{ marginRight: 8 }}>
+              <path fill="#EA4335" d="M24 22.08L9.6 12v24h6v-12.8l8.4 5.6 8.4-5.6V36h6V12z"/>
+              <path fill="#FBBC05" d="M24 22.08L9.6 12v24h6v-12.8l8.4 5.6z" opacity=".6"/>
+              <path fill="#4285F4" d="M24 22.08l14.4-10.08v24h-6V23.2z" opacity=".6"/>
+            </svg>
+            Sign in with Gmail
+          </button>
         </form>
       </div>
     </div>
