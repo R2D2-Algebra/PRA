@@ -6,6 +6,7 @@ import "./style.css";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./i18n/index.js"
 
 ReactDOM.createRoot(document.getElementById("app")).render(
   <React.StrictMode>

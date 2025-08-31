@@ -1,0 +1,109 @@
+{
+  "common": {
+    "add": "Dodaj",
+    "cancel": "Odustani",
+    "save": "Spremi",
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "loading": "Učitavanje…",
+    "search": "Pretraži",
+    "show": "Prikaži",
+    "hide": "Sakrij",
+    "copy": "Kopiraj",
+    "copied": "Kopirano!",
+    "no_results": "Nema rezultata.",
+    "confirm": "Potvrdi",
+    "close": "Zatvori"
+  },
+
+  "nav": {
+    "site": "PassKeep",
+    "generator": "Generator",
+    "passwords": "Lozinke",
+    "cards": "Kartice",
+    "notes": "Bilješke",
+    "login": "Prijava",
+    "logout": "Odjava"
+  },
+
+  "generator": {
+    "title": "Generator lozinki",
+    "length": "Duljina",
+    "lowercase": "Mala slova",
+    "uppercase": "Velika slova",
+    "digits": "Brojevi",
+    "symbols": "Simboli",
+    "new": "Nova",
+    "copy": "Kopiraj"
+  },
+
+  "passwords": {
+    "title": "Lozinke",
+    "search_placeholder": "Traži domenu (npr. example.com)",
+    "add": "Dodaj",
+    "domain": "Domena",
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "copy_password": "Kopiraj lozinku",
+    "view_edit": "Pogledaj/Uredi",
+    "delete": "Izbriši",
+    "created_at": "Kreirano",
+    "no_entries": "Nema zapisa."
+  },
+
+  "cards": {
+    "title": "Kreditne kartice",
+    "search_placeholder": "Traži po znamenkama / zadnje 4",
+    "card_label": "Kartica",
+    "card_number": "Broj kartice",
+    "expiry": "Istek (MM/GG)",
+    "cvv": "CVV",
+    "last4": "Zadnje 4",
+    "copy_number": "Kopiraj broj",
+    "show": "Prikaži",
+    "hide": "Sakrij",
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "no_cards": "Nema kartica.",
+    "modal_add": "Dodaj karticu",
+    "modal_edit": "Uredi karticu",
+    "error_number": "Broj kartice treba imati 12–19 znamenki.",
+    "error_expiry": "Istek mora biti MM/GG ili MM/GGGG.",
+    "error_cvv": "CVV mora imati 3–4 znamenke.",
+    "error_save": "Spremanje nije uspjelo.",
+    "confirm_delete": "Izbrisati karticu koja završava s {{last4}}?"
+  },
+
+  "notes": {
+    "title": "Bilješke",
+    "search_placeholder": "Pretraži bilješke…",
+    "no_notes": "Nema bilješki.",
+    "add_note": "Dodaj bilješku",
+    "title_label": "Naslov",
+    "content_label": "Sadržaj",
+    "edit": "Uredi",
+    "save": "Spremi",
+    "cancel": "Odustani",
+    "delete": "Izbriši",
+    "error_title_required": "Naslov je obavezan.",
+    "confirm_delete": "Izbrisati bilješku \"{{title}}\"?"
+  },
+
+  "auth": {
+    "login_title": "Prijava",
+    "email": "Email",
+    "password": "Glavna lozinka",
+    "remember_me": "Zapamti me",
+    "register_link": "Registracija",
+    "sign_in": "Prijavi se",
+    "signing_in": "Prijava…",
+    "or_with": "Ili s",
+    "sign_in_gmail": "Prijava putem Gmaila",
+
+    "register_title": "Kreiraj račun",
+    "confirm_password": "Potvrdi lozinku",
+    "passwords_must_match": "Lozinke se moraju podudarati.",
+    "register": "Registriraj se",
+    "registering": "Registracija…"
+  }
+}

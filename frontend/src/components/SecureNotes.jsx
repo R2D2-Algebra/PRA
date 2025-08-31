@@ -1,15 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
-import {
-  getNotes,
-  createNote,
-  updateNote,
-  deleteNote,
-} from "../api/secureNotes.js";
+import { getNotes, createNote, updateNote, deleteNote } from "../api/secureNotes.js";
+import { useTranslation } from "react-i18next";
 
 const MOCK = [
-  { id: 1, title: "Wi-Fi", content: "Home SSID: MyNet\nPassword: superSecret123" },
-  { id: 2, title: "Ideas", content: "Ship MVP, then iterate.\n• Notes grid\n• Tags later" },
+  { id: 1, title: "vajfaj", content: "ssid: prolaz\nlozinka: lozinka" },
+  { id: 2, title: "sajdhjasd", content: "asdsadasdsads" },
 ];
 
 const Modal = ({ title, children, onClose, width = 520 }) => (
@@ -26,6 +22,7 @@ const Modal = ({ title, children, onClose, width = 520 }) => (
 );
 
 export default function SecureNotes() {
+  const { t } = useTranslation();
   const { useFakeAuth } = useAuth();
 
   const [notes, setNotes] = useState(MOCK);
@@ -70,7 +67,7 @@ export default function SecureNotes() {
 
   const submitAdd = async (e) => {
     e.preventDefault();
-    if (!addForm.title.trim()) return setAddErr("Title is required.");
+    if (!addForm.title.trim()) return setAddErr(t("notes.error.titleRequired", "Title is required."));
     const payload = { title: addForm.title.trim(), content: addForm.content || "" };
 
     if (useFakeAuth) {
@@ -85,7 +82,7 @@ export default function SecureNotes() {
       setNotes(prev => [created ?? payload, ...prev]);
       closeAdd();
     } catch (e) {
-      setAddErr(e.message || "Failed to create note.");
+      setAddErr(e.message || t("notes.error.create", "Failed to create note."));
     }
   };
 
@@ -97,7 +94,7 @@ export default function SecureNotes() {
   const cancelEdit = () => { setEditingId(null); setEditForm({ title: "", content: "" }); setEditErr(""); };
 
   const saveEdit = async (id) => {
-    if (!editForm.title.trim()) return setEditErr("Title is required.");
+    if (!editForm.title.trim()) return setEditErr(t("notes.error.titleRequired", "Title is required."));
     const payload = { title: editForm.title.trim(), content: editForm.content || "" };
 
     if (useFakeAuth) {
@@ -111,14 +108,14 @@ export default function SecureNotes() {
       setNotes(prev => prev.map(n => (n.id === id ? { ...n, ...payload } : n)));
       cancelEdit();
     } catch (e) {
-      setEditErr(e.message || "Failed to save.");
+      setEditErr(e.message || t("notes.error.save", "Failed to save."));
     }
   };
 
   const remove = async (id) => {
     const n = notes.find(x => x.id === id);
     if (!n) return;
-    if (!confirm(`Delete note "${n.title}"?`)) return;
+    if (!confirm(t("notes.confirmDelete", 'Delete note "{{title}}"?', { title: n.title }))) return;
 
     if (useFakeAuth) {
       setNotes(prev => prev.filter(x => x.id !== id));
@@ -138,26 +135,26 @@ export default function SecureNotes() {
   return (
     <div className="notes-wrap">
       <div className="notes-header">
-        <h2>Notes</h2>
+        <h2>{t("notes.title", "Notes")}</h2>
         <div style={{ display: "flex", gap: 8 }}>
           <input
             className="cc-search"
-            placeholder="Search notes…"
+            placeholder={t("notes.search_placeholder", "Search notes…")}
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
-          <button className="btn-action" onClick={openAdd}>+ Add</button>
+          <button className="btn-action" onClick={openAdd}>+ {t("notes.add_note", "Add")}</button>
         </div>
       </div>
 
-      {loading && <div className="text-muted mb-2">Loading…</div>}
+      {loading && <div className="text-muted mb-2">{t("common.loading", "Loading…")}</div>}
 
       <div className="notes-grid">
         {filtered.map(note => {
           const isEditing = editingId === note.id;
           return (
             <div className="note-card" key={note.id}>
-              <button className="note-close" onClick={() => remove(note.id)} aria-label="Delete note">×</button>
+              <button className="note-close" onClick={() => remove(note.id)} aria-label={t("notes.delete", "Delete")}>×</button>
 
               {!isEditing ? (
                 <>
@@ -165,7 +162,9 @@ export default function SecureNotes() {
                   <div className="note-content">{note.content}</div>
 
                   <div className="note-actions">
-                    <button className="btn-action" onClick={() => beginEdit(note)}>Edit</button>
+                    <button className="btn-action" onClick={() => beginEdit(note)}>
+                      {t("notes.edit", "Edit")}
+                    </button>
                   </div>
                 </>
               ) : (
@@ -173,20 +172,24 @@ export default function SecureNotes() {
                   {editErr && <div className="alert alert-danger" role="alert" style={{ marginBottom: 8 }}>{editErr}</div>}
                   <input
                     className="note-input"
-                    placeholder="Title"
+                    placeholder={t("notes.form.title", "Title")}
                     value={editForm.title}
                     onChange={(e) => setEditForm(f => ({ ...f, title: e.target.value }))}
                   />
                   <textarea
                     className="note-textarea"
-                    placeholder="Write your note…"
+                    placeholder={t("notes.form.content", "Write your note…")}
                     rows={6}
                     value={editForm.content}
                     onChange={(e) => setEditForm(f => ({ ...f, content: e.target.value }))}
                   />
                   <div className="note-actions">
-                    <button className="btn-action" onClick={() => saveEdit(note.id)}>Save</button>
-                    <button className="btn-action" onClick={cancelEdit}>Cancel</button>
+                    <button className="btn-action" onClick={() => saveEdit(note.id)}>
+                      {t("notes.form.save", "Save")}
+                    </button>
+                    <button className="btn-action" onClick={cancelEdit}>
+                      {t("notes.form.cancel", "Cancel")}
+                    </button>
                   </div>
                 </>
               )}
@@ -195,41 +198,47 @@ export default function SecureNotes() {
         })}
 
         {!filtered.length && !loading && (
-          <div className="text-muted" style={{ padding: 12 }}>No notes.</div>
+          <div className="text-muted" style={{ padding: 12 }}>
+            {t("notes.none", "No notes.")}
+          </div>
         )}
       </div>
 
       {isAddOpen && (
-        <Modal title="Add note" onClose={closeAdd}>
+        <Modal title={t("notes.addTitle", "Add note")} onClose={closeAdd}>
           {addErr && <div className="alert alert-danger" role="alert" style={{ marginBottom: 8 }}>{addErr}</div>}
 
           <form onSubmit={submitAdd} className="login-form">
             <div className="form-group">
-              <label htmlFor="nt-title">Title</label>
+              <label htmlFor="nt-title">{t("notes.form.title", "Title")}</label>
               <input
                 id="nt-title"
                 type="text"
                 value={addForm.title}
                 onChange={(e) => setAddForm(f => ({ ...f, title: e.target.value }))}
-                placeholder="e.g., Server checklist"
+                placeholder={t("notes.form.title_ph", "e.g., Server checklist")}
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="nt-content">Content</label>
+              <label htmlFor="nt-content">{t("notes.form.content", "Content")}</label>
               <textarea
                 id="nt-content"
                 rows={8}
                 value={addForm.content}
                 onChange={(e) => setAddForm(f => ({ ...f, content: e.target.value }))}
-                placeholder="Write anything…"
+                placeholder={t("notes.form.content_ph", "Write anything…")}
                 style={{ resize: "vertical" }}
               />
             </div>
 
             <div className="d-flex justify-content-end gap-2">
-              <button type="button" className="btn-action" onClick={closeAdd}>Cancel</button>
-              <button type="submit" className="btn-action">Add</button>
+              <button type="button" className="btn-action" onClick={closeAdd}>
+                {t("notes.form.cancel", "Cancel")}
+              </button>
+              <button type="submit" className="btn-action">
+                {t("notes.add", "Add")}
+              </button>
             </div>
           </form>
         </Modal>
